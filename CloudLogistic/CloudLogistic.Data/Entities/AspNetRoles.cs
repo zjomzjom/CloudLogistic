@@ -13,7 +13,7 @@ namespace CloudLogistic.Data.Entities
         {
             AspNetUsers = new HashSet<AspNetUsers>();
         }
-
+        [Key]
         public string Id { get; set; }
 
         [Required]

@@ -48,6 +48,23 @@ namespace CloudLogistic.Models
         [Display(Name = "Confirm password")]
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
+
+        [Required(AllowEmptyStrings = false, ErrorMessage = "Field {0} is required.")]
+        [Display(Name = "First name")]
+        public string FirstName { get; set; }
+
+        [Required(AllowEmptyStrings = false, ErrorMessage = "Field {0} is required.")]
+        [Display(Name = "Last name")]
+        public string LastName { get; set; }
+
+        [Required(AllowEmptyStrings = false, ErrorMessage = "Field {0} is required.")]
+        [Display(Name = "Accept Regulations")]
+        public bool AcceptRegulations { get; set; }
+
+        [Required(AllowEmptyStrings = false, ErrorMessage = "Field {0} is required.")]
+        [Display(Name = "Accept Personal Data")]
+        public bool AcceptPersonalData { get; set; }
+
     }
 
     public class RegisterExternalBindingModel

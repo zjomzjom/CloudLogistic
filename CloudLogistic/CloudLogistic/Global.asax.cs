@@ -1,5 +1,7 @@
-﻿using System;
+﻿using CloudLogistic.Data.Entities;
+using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Http;
@@ -18,6 +20,11 @@ namespace CloudLogistic
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+
+#if DEBUG
+            //recreate db if model changes
+            Database.SetInitializer<CLContext>(new DropCreateDatabaseIfModelChanges<CLContext>());
+#endif
         }
     }
 }

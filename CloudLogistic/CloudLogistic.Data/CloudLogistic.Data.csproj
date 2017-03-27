@@ -5,7 +5,7 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{CC517023-D703-40D0-832D-6A99F0172F0A}</ProjectGuid>
-    <OutputType>Exe</OutputType>
+    <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>CloudLogistic.Data</RootNamespace>
     <AssemblyName>CloudLogistic.Data</AssemblyName>
@@ -32,6 +32,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
@@ -57,17 +60,19 @@
     <Compile Include="Entities\AspNetUserClaims.cs" />
     <Compile Include="Entities\AspNetUserLogins.cs" />
     <Compile Include="Entities\AspNetUsers.cs" />
-    <Compile Include="DatabaseContext.cs" />
+    <Compile Include="CLContext.cs" />
+    <Compile Include="Entities\BaseEntity.cs" />
+    <Compile Include="Entities\Organisation.cs" />
+    <Compile Include="Entities\OrganisationMember.cs" />
     <Compile Include="Entities\Users.cs" />
+    <Compile Include="Extensions\LinqExtensions.cs" />
     <Compile Include="Interfaces\IContext.cs" />
     <Compile Include="Interfaces\IRepository.cs" />
-    <Compile Include="Interfaces\IUnitOfWork.cs" />
-    <Compile Include="UnitOfWork.cs" />
+    <Compile Include="Interfaces\IUsersRepository.cs" />
+    <Compile Include="Models\BaseRepository.cs" />
+    <Compile Include="Repositories\UsersRepository.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Models\" />
-    <Folder Include="Repositories\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

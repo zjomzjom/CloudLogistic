@@ -15,7 +15,6 @@ namespace CloudLogistic.Data.Entities
             AspNetUserLogins = new HashSet<AspNetUserLogins>();
             AspNetRoles = new HashSet<AspNetRoles>();
         }
-
         public string Id { get; set; }
 
         [StringLength(256)]

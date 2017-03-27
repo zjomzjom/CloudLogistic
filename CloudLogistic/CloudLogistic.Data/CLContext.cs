@@ -7,17 +7,21 @@ namespace CloudLogistic.Data.Entities
     using System.Data.Common;
     using Interfaces;
     using System.Data.Entity.Infrastructure;
-    using System.Data;
 
-    public partial class DatabaseContext : DbContext, IContext
+    public partial class CLContext : DbContext, IContext
     {
-        public DatabaseContext()
+        public CLContext()
             : base("name=DefaultConnection")
         {
 
         }
+        public CLContext(string connectionName) : base(connectionName)
+        {
 
-        public DatabaseContext(DbConnection con) : base(con, true)
+        }
+
+        public CLContext(DbConnection conn)
+            : base(conn, true)
         {
 
         }
@@ -26,9 +30,14 @@ namespace CloudLogistic.Data.Entities
         public virtual DbSet<AspNetUserClaims> AspNetUserClaims { get; set; }
         public virtual DbSet<AspNetUserLogins> AspNetUserLogins { get; set; }
         public virtual DbSet<AspNetUsers> AspNetUsers { get; set; }
+        public virtual DbSet<Users> Users { get; set; }
+        public virtual DbSet<Organisations> Organisations { get; set; }
+        public virtual DbSet<OrganisationsMembers> OrganisationsMembers { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
+            base.OnModelCreating(modelBuilder);
+
             modelBuilder.Entity<AspNetRoles>()
                 .HasMany(e => e.AspNetUsers)
                 .WithMany(e => e.AspNetRoles)
@@ -45,25 +54,31 @@ namespace CloudLogistic.Data.Entities
                 .HasForeignKey(e => e.UserId);
         }
 
-        public void ChangeState<T>(T entity, EntityState state) where T : class
-        {
-            Entry<T>(entity).State = state;
-        }
-
-        public IDbSet<T> GetEntitySet<T>()
-        where T : class
-        {
-            return Set<T>();
-        }
-
-        public virtual int Commit()
+        public void Commit()
         {
             if (this.ChangeTracker.Entries().Any(IsChanged))
             {
-                return this.SaveChanges();
+                this.SaveChanges();
             }
-            return 0;
+
         }
+
+
+        public void MarkUpdated<T>(T entity) where T : class
+        {
+            Entry(entity).State = EntityState.Modified;
+        }
+
+        public void MarkDeleted<T>(T entity) where T : class
+        {
+            Entry(entity).State = EntityState.Deleted;
+        }
+
+        public void MarkAdded<T>(T entity) where T : class
+        {
+            Entry(entity).State = EntityState.Added;
+        }
+
 
         private static bool IsChanged(DbEntityEntry entity)
         {
@@ -77,16 +92,5 @@ namespace CloudLogistic.Data.Entities
             return (entity.State & state) == state;
         }
 
-        public virtual DbTransaction BeginTransaction()
-        {
-            var connection = (this as IObjectContextAdapter).ObjectContext.Connection;
-            if (connection.State != ConnectionState.Open)
-            {
-                connection.Open();
-            }
-
-            return connection
-                .BeginTransaction(IsolationLevel.ReadCommitted);
-        }
     }
 }
