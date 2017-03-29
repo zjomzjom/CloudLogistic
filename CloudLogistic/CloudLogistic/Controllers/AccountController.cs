@@ -15,8 +15,6 @@ using Microsoft.Owin.Security.OAuth;
 using CloudLogistic.Models;
 using CloudLogistic.Providers;
 using CloudLogistic.Results;
-using CloudLogistic.Data;
-using CloudLogistic.Data.Repositories;
 
 namespace CloudLogistic.Controllers
 {
@@ -337,10 +335,6 @@ namespace CloudLogistic.Controllers
             {
                 return GetErrorResult(result);
             }
-
-            UsersRepository ur = new UsersRepository();
-            ur.Set(new Data.Entities.Users { FirstName = model.FirstName, SecondName = model.LastName, UserId = user.Id });
-
             return Ok();
         }
 
