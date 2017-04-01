@@ -10,7 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CloudLogistic.Services.Services
+namespace CloudLogistic.Services
 {
     public class UsersService : BaseService, IUsersService
     {
@@ -45,17 +45,34 @@ namespace CloudLogistic.Services.Services
 
         public Users Set(UsersVM user)
         {
+
             return new Users();
         }
 
         public Users Get(int? Id, string UserId, string Email)
         {
+            Users user;
+            if (Id != null)
+                user = this._db.Users.FirstOrDefault(x => x.Id == Id);
+            else if (!String.IsNullOrEmpty(UserId))
+                user = this._db.Users.FirstOrDefault(x => x.UserId == UserId);
+            else if (!String.IsNullOrEmpty(Email))
+                user = this._db.Users.FirstOrDefault(x => x.User.Email == Email);
             return new Users();
         }
 
-        public UsersVM GetVM(int? Id, string Email)
+        public UsersVM GetVM(int? Id, string UserId, string Email)
         {
-            return new UsersVM();
+            Users user;
+            if (Id != null)
+                user = this._db.Users.FirstOrDefault(x => x.Id == Id);
+            else if (!String.IsNullOrEmpty(UserId))
+                user = this._db.Users.FirstOrDefault(x => x.UserId == UserId);
+            else if (!String.IsNullOrEmpty(Email))
+                user = this._db.Users.FirstOrDefault(x => x.User.Email == Email);
+            else
+                return null;
+            return this._mapper.usersToUserVM(user);
         }
     }
 }

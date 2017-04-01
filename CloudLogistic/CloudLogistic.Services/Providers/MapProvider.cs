@@ -7,28 +7,47 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CloudLogistic.Services.Services
+namespace CloudLogistic.Services
 {
     public class MapProvider : IMapProvider
     {
         public Users usersVMToUsers(UsersVM user)
         {
             return new Users() {
-                UserId = user.UserId,
+                Id=user.Id,
                 FirstName = user.FirstName,
                 SecondName = user.SecondName,
             };
         }
 
+
         public UsersVM usersToUserVM(Users user)
         {
-            return new UserVM() {
-                UserId = user.UserId,
+            return new UsersVM() {
+                Id = user.Id,
                 FirstName = user.FirstName,
-                SecondName = user.SecondName
+                SecondName = user.SecondName,
+                Email = user.User.Email
             };
         }
 
+        public OrganisationsVM organisationsToOrganisationsVM(Organisations organisation)
+        {
+            return new OrganisationsVM()
+            {
+                Id = organisation.Id,
+                Name = organisation.Name
+            };
+        }
 
+        public Organisations organisationsVMToOrganisations(OrganisationsVM organisation)
+        {
+            return new Organisations()
+            {
+                Id = organisation.Id,
+                Name = organisation.Name
+            };
+        }
+        
     }
 }

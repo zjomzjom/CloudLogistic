@@ -46,6 +46,6 @@ namespace CloudLogistic.Services.Interfaces
         /// <param name="Id">User Id</param>
         /// <param name="Email">User Email</param>
         /// <returns></returns>
-        UsersVM GetVM(int? Id, string Email);
+        UsersVM GetVM(int? Id, string UserId, string Email);
     }
 }

@@ -29,13 +29,13 @@ namespace CloudLogistic.Services.Interfaces
         /// </summary>
         /// <param name="organisationVM"></param>
         /// <returns></returns>
-        Organisations OrganisationsVMToOrganisations(OrganistationsVM organisationVM);
+        Organisations organisationsVMToOrganisations(OrganisationsVM organisationVM);
 
         /// <summary>
         /// 
         /// </summary>
         /// <param name="organisation"></param>
         /// <returns></returns>
-        OrganistationsVM organisationsToOrganisationsVM(Organisations organisation);
+        OrganisationsVM organisationsToOrganisationsVM(Organisations organisation);
     }
 }

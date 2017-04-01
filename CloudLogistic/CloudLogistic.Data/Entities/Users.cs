@@ -19,5 +19,6 @@ namespace CloudLogistic.Data.Entities
         public string FirstName { get; set; }
 
         public string SecondName { get; set; }
+
     }
 }

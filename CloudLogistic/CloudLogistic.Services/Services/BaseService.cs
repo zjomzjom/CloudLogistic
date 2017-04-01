@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CloudLogistic.Services.Services
+namespace CloudLogistic.Services
 {
     public abstract class BaseService
     {
@@ -22,7 +22,7 @@ namespace CloudLogistic.Services.Services
             this._mapper = new MapProvider();
         }
 
-        public BaseService(IContext db, ICacheProvider cache)
+        public BaseService(CLContext db, ICacheProvider cache)
         {
             this._db = db;
             this._cache = cache;

@@ -5,7 +5,7 @@ using System.Web;
 
 namespace CloudLogistic.Models
 {
-    public class OrganistationsVM
+    public class OrganisationsVM
     {
         public int Id { get; set; }
 

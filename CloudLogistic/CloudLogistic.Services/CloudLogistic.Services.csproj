@@ -66,7 +66,7 @@
       <Name>CloudLogistic.Data</Name>
     </ProjectReference>
     <ProjectReference Include="..\CloudLogistic\CloudLogistic.Api.csproj">
-      <Project>{746CD039-A11A-43F3-A398-6B5861324BEF}</Project>
+      <Project>{746cd039-a11a-43f3-a398-6b5861324bef}</Project>
       <Name>CloudLogistic.Api</Name>
     </ProjectReference>
   </ItemGroup>
@@ -77,6 +77,7 @@
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

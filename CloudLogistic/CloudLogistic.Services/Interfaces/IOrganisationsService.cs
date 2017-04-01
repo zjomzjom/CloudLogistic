@@ -11,15 +11,15 @@ namespace CloudLogistic.Services.Interfaces
 {
     public interface IOrganisationsService
     {
-        ICollection<Organisations> List();
+        ICollection<Organisations> List(bool sorted = false);
 
-        ICollection<OrganistationsVM> ListVM();
+        ICollection<OrganisationsVM> ListVM(bool sorted = false);
 
         Organisations Get(int Id);
 
-        OrganistationsVM GetVM(int Id);
+        OrganisationsVM GetVM(int Id);
 
-        Organisations Set(OrganistationsVM organisation);
+        Organisations Set(OrganisationsVM organisation);
 
         bool AddUser(int organisationId, int userId);
 
