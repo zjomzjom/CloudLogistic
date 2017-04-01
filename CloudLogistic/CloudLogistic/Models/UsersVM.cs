@@ -5,12 +5,14 @@ using System.Web;
 
 namespace CloudLogistic.Models
 {
-    public class UserVM
+    public class UsersVM
     {
-        public string UserId { get; set; }
+        public int Id { get; set; }
 
         public string FirstName { get; set; }
 
         public string SecondName { get; set; }
+
+        public string Email { get; set; }
     }
 }

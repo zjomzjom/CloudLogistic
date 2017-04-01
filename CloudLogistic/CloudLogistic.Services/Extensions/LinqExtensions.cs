@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CloudLogistic.Data.Extensions
+namespace CloudLogistic.Services.Extensions
 {
     public static class LinqExtensions
     {
